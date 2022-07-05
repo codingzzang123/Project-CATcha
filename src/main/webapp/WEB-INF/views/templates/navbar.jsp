@@ -4,6 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="${pageContext.request.contextPath}/resources/js/hosun/jquery-3.6.0.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/hosun/main.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/hosun/scroll.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

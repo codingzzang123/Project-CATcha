@@ -9,7 +9,7 @@
 <script src="${pageContext.request.contextPath}/resources/js/hosun/main.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/hosun/scroll.js"></script>
 
-<link href="${pageContext.request.contextPath}/resources/css/hosun/hosun.css" rel="stylesheet"/>
+<link href="${pageContext.request.contextPath}/resources/css/hosun/main.css" rel="stylesheet"/>
 <title>Main Page</title>
 
 </head>
