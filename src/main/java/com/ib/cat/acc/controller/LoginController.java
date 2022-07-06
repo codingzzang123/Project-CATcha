@@ -27,7 +27,7 @@ public class LoginController {
 //		if(bindingResult.hasErrors()) {
 //			return "member/sign";
 //		}
-		
+		//test 지성
 		MultipartFile mfile = md.getFile();
 		md.setImgo(md.getFile().getOriginalFilename());
 		System.out.println(md.getImgo());
