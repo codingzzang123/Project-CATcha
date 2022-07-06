@@ -13,7 +13,7 @@ import com.ib.cat.main.util.MovieDTO;
 
 @Controller
 public class MainController {
-	
+	/*mybatis test*/
 	@RequestMapping("/main")
 	public ModelAndView mainForm() {
 		GetInfoUtil util = new GetInfoUtil();
