@@ -7,4 +7,5 @@
 	<select id="jiseong">
 		select * from reply_content
 	</select>
+
 </mapper>
