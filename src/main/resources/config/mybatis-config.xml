@@ -15,6 +15,7 @@
 	  
 	<typeAliases>
 	    <!--  <typeAlias alias="memberDTO" type="com.ib.cat.member.model.MemberDTO"/>  -->
+	    <typeAlias alias="member" type="com.ib.cat.acc.member.MemberDto"/>
 	</typeAliases>
 	
 </configuration>
