@@ -670,3 +670,105 @@ body {
 .css-vp7uyl>img {
 	opacity: 0.4;
 }
+
+/* 최근 게시물 5개 불러오기 + 방문자수 css디자인 */
+.css-1{
+	margin: auto;
+	width: 1320px;
+	height: 400px;
+	border: 1px solid red;
+}
+
+.css-2{
+	border: 1px solid red;
+	margin-left:200px;
+}
+
+.css-7klu3x .css-2 {
+	display: inline-block;
+}
+
+/* 시계 */
+.clock{
+    width:350px; 
+    height:350px; 
+    display:flex; 
+    justify-content: center; 
+    align-items: center; 
+    background: url("http://samuel-garcia.site/img/clock-sam.png");
+    background-size: cover;
+    border: 4px solid #091921;
+    box-shadow: 0 -15px 15px rgba(255,255,255,0.05),
+                inset 0 -15px 15px rgba(255,255,255,0.05),
+                0 -5px 15px rgba(0,0,0,0.3),
+                inset 0 15px 15px rgba(0,0,0,0.3);
+    border-radius: 50%;
+}
+
+.clock:before {
+    content: '';
+    position: absolute;
+    width:15px;
+    height:15px;    
+    background:#fff;
+    border-radius: 50%;
+    z-index : 10;
+}
+
+.clock .hour,
+.clock .min,
+.clock .sec{
+    position: absolute;
+}
+
+.clock .hour .hr{
+    width : 160px;
+    height : 160px;
+}
+
+.clock .min .mn{
+    width : 190px;
+    height : 190px;
+}
+
+.clock .sec .sc{
+    width : 230px;
+    height : 230px;
+}
+
+.hr, .mn, .sc{
+    display:flex; 
+    justify-content: center; 
+    /* position: absolute; */
+    border-radius: 50%;
+}
+
+.hr:before{
+    content: '';
+    position: absolute;
+    width:8px;
+    height:80px;    
+    background:#000000;
+    z-index : 10;
+    border-radius: 6px 6px 0 0;
+}
+
+.mn:before{
+    content: '';
+    position: absolute;
+    width:4px;
+    height:90px;    
+    background:#000000;
+    z-index : 10;
+    border-radius: 6px 6px 0 0;
+}
+
+.sc:before{
+    content: '';
+    position: absolute;
+    width:2px;
+    height:150px;    
+    background:rgb(255, 0, 0);
+    z-index : 10;
+    border-radius: 6px 6px 0 0;
+}

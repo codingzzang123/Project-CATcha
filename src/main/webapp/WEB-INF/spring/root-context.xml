@@ -39,6 +39,7 @@
 				<value>classpath:config/sqlmap-reply.xml</value>
 				<value>classpath:config/sqlmap-replycontent.xml</value>
 				<value>classpath:config/sqlmap-visitor.xml</value>
+				<value>classpath:config/sqlmap-main.xml</value>
 			</list>
 		</property>
 	</bean>
