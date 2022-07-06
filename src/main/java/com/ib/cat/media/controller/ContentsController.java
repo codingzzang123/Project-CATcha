@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,57 +35,59 @@ public class ContentsController {
 			@PathVariable("contentsNum") int contentsNum) {
 		System.out.println("Controller 작동중");
 		System.out.println("type: " + contentsType);
+		System.out.println("contentsNum: "+ contentsNum);
 		
 		model.addAttribute("contentsNum", contentsNum);
-		ContentsVO contents = (ContentsVO) contentsUtil.getInfoList(contentsType, sortBy); //전체가져오기
+		//contentsNum(id) 컨텐츠VO 가져옴
+		ContentsVO contents = (ContentsVO) contentsUtil.getSpecificContent(contentsType, contentsNum); 
 		
-		List<String> images = contentsUtil.getImages(contentsType, contentsNum);
+//		List<String> images = contentsUtil.getImages(contentsType, contentsNum);
 		
 		List<CreditsVO> cast = contentsUtil.getCredits(contentsType, contentsNum, "cast");
 		List<CreditsVO> crew = contentsUtil.getCredits(contentsType, contentsNum, "crew");
 		
-		List<ContentsVO> reco = new ArrayList<ContentsVO>();
+//		List<ContentsVO> reco = new ArrayList<ContentsVO>();
 		
-		List<ContentsVO> temp = new ArrayList<ContentsVO>();
-		temp = contentsUtil.getInfoList(contentsType, sortBy);
-		
-		for(int i = 0 ; i < temp.size() ; i++) {
-			List<Integer> list1 = new ArrayList<>(temp.get(i).getGenres());//모든 컨텐츠의 장르
-			List<Integer> list2 = new ArrayList<>(contents.getGenres());//상세 페이지 컨텐츠 장르
-			
-			//등록 장르 1개인 경우
-			if(list2.size() == 1) {
-				list1.retainAll(list2);
-				if (list1.size() == 1) {
-					ContentsVO vo = new ContentsVO();
-					vo = temp.get(i);
-					reco.add(vo);
-				}
-			} else if (list2.size() == 2) {
-				list1.retainAll(list2);
-				if (list1.size() == 2) {
-					ContentsVO vo = new ContentsVO();
-					vo = temp.get(i);
-					reco.add(vo);
-				}
-			} else {
-				list1.retainAll(list2);
-				if(list1.size() >= 3) {//겹치는 장르가 최소 3개 이상인 경우
-					ContentsVO vo = new ContentsVO();
-					vo = temp.get(i);
-					reco.add(vo);
-				}
-			}
-		}
-		
+		//reco만들기
+//		List<ContentsVO> temp = new ArrayList<ContentsVO>();
+//		temp = contentsUtil.getInfoList(contentsType, sortBy); //전체가져오기
+//		for(int i = 0 ; i < temp.size() ; i++) {
+//			List<Integer> list1 = new ArrayList<>(temp.get(i).getGenres());//모든 컨텐츠의 장르
+//			List<Integer> list2 = new ArrayList<>(contents.getGenres());//상세 페이지 컨텐츠 장르
+//			
+//			//등록 장르 1개인 경우
+//			if(list2.size() == 1) {
+//				list1.retainAll(list2);
+//				if (list1.size() == 1) {
+//					ContentsVO vo = new ContentsVO();
+//					vo = temp.get(i);
+//					reco.add(vo);
+//				}
+//			} else if (list2.size() == 2) {
+//				list1.retainAll(list2);
+//				if (list1.size() == 2) {
+//					ContentsVO vo = new ContentsVO();
+//					vo = temp.get(i);
+//					reco.add(vo);
+//				}
+//			} else {
+//				list1.retainAll(list2);
+//				if(list1.size() >= 3) {//겹치는 장르가 최소 3개 이상인 경우
+//					ContentsVO vo = new ContentsVO();
+//					vo = temp.get(i);
+//					reco.add(vo);
+//				}
+//			}
+//		}
+//		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("contentsDetail");
+		mav.setViewName("movie/content");
 		mav.addObject("contents", contents);
-		mav.addObject("images", images);
+//		mav.addObject("images", images);
 		mav.addObject("cast", cast);
 		mav.addObject("crew", crew);
-		mav.addObject("reco", reco); //추천 컨텐츠
-		
+//		mav.addObject("reco", reco); //추천 컨텐츠
+
 		return mav;
 	}
 	

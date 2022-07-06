@@ -20,6 +20,7 @@ import org.springframework.stereotype.Controller;
 
 import com.ib.cat.media.vo.ContentsVO;
 import com.ib.cat.media.vo.CreditsVO;
+import com.ib.cat.media.vo.GenresVO;
 
 
 @Controller
@@ -56,11 +57,13 @@ public class ContentsUtil {
 		return getTotalResults;
 	}
 	
-	//title,overview,release_date,genre,image(poster_path)
-	//runtime,crew/cast => 세팅하기!
+	//title,overview,release_date,genre (contentsVO에 setting완)
+	//crew/cast, image(poster_path) => 별도 객체로 setting 완 (메서드 활용)
+	//runtime, => 세팅하기!
 	public ContentsVO getSpecificContent(String type, int contentsNum) {
+		System.out.println("getSpecificContent Util 작동 중");
 		ContentsVO sContent = null;
-		List<Integer> genreList = null;
+		List<String> genreList = null;
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String date = "0001-01-01";
 		try {
@@ -74,12 +77,13 @@ public class ContentsUtil {
 			result = bf.readLine();
 				
 			JSONParser jsonParser = new JSONParser();
-			JSONObject jsonObject = (JSONObject)jsonParser.parse(result);
-			JSONArray list = (JSONArray)jsonObject.get("results");
+			JSONObject contents = (JSONObject)jsonParser.parse(result);
+
+//			JSONArray list = (JSONArray)jsonObject.get("results");
 			
-			for (int j = 0 ; j < list.size() ; j++) {
+			
 				ContentsVO vo = new ContentsVO();
-				JSONObject contents = (JSONObject)list.get(j);
+//				JSONObject contents = (JSONObject)list.get(1);
 					
 				vo.setContentsNum(Integer.parseInt(String.valueOf(contents.get("id"))));
 				vo.setContentsType(type);
@@ -111,18 +115,38 @@ public class ContentsUtil {
 				} else {
 					vo.setPosterPath(contents.get("poster_path").toString());
 				}
-//				vo.setPage(Integer.parseInt((String)jsonObject.get("page")));
-//				vo.setPage(i);
 				
-				//장르 id를 List<Integer>형태로 저장 -> 장르 비교를 위한 작업
-				JSONArray genreListJ = (JSONArray)contents.get("genre_ids");
-				genreList = new ArrayList<Integer>();
-				for (int k = 0 ; k < genreListJ.size() ; k++) {
-					genreList.add(Integer.parseInt(String.valueOf(genreListJ.get(k))));
+				//runtime
+				String runtime = String.valueOf(contents.get("runtime"));
+				vo.setRuntime(runtime);
+				
+				JSONArray genreListJ = (JSONArray)contents.get("genres"); 
+				// "genres": [ { "id":18, "name":"드라마" },{"id":...}] 형태
+				List<GenresVO> tmpls = new ArrayList<>();
+				for (int k = 0 ; k < genreListJ.size() ; k++) {		 
+					JSONObject tmp = (JSONObject)genreListJ.get(k);
+					int tempId = (Integer.parseInt(tmp.get("id").toString()));
+					String tempName = tmp.get("name").toString();
+					GenresVO gvo =  new GenresVO();
+					gvo.setGenreId(tempId);
+					gvo.setGenreName(tempName);
+					tmpls.add(gvo);
+					
+//					GenresVO genresVO = new GenresVO();
+//					JSONObject tmp = (JSONObject)genreListJ.get(k); //JSONObject : {"id": ,"name": } 하나!
+//					genresVO.setGenreId(Integer.parseInt(tmp.get("id").toString()));
+//					genresVO.setGenreName(tmp.get("name").toString());
+//					System.out.println(genresVO);
+//					vo.setGenresVO(genresVO);
 				}
-				vo.setGenres(genreList);
+				vo.setLs(tmpls);
+				System.out.println(vo.getLs().size());
+				for(GenresVO g : vo.getLs())
+					System.out.println("id: "+g.getGenreId()+"\n"
+							+"name : "+g.getGenreName());
+				System.out.println();
 				sContent = vo;
-			} 
+			
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -154,7 +178,11 @@ public class ContentsUtil {
 				
 			JSONParser jsonParser = new JSONParser();
 			JSONObject jsonObject = (JSONObject)jsonParser.parse(result);
+
 			JSONArray list = (JSONArray)jsonObject.get("results");
+			
+			int totalPages = Integer.parseInt(String.valueOf(jsonObject.get("total_pages")));
+			int totalResults = Integer.parseInt(String.valueOf(jsonObject.get("total_results")));
 								
 			for (int j = 0 ; j < list.size() ; j++) {
 				ContentsVO vo = new ContentsVO();
@@ -202,6 +230,8 @@ public class ContentsUtil {
 						genreList.add(Integer.parseInt(String.valueOf(genreListJ.get(k))));
 					}
 					vo.setGenres(genreList);
+					vo.setTotalPages(totalPages);
+					vo.setTotalResults(totalResults);
 					infoList.add(vo);
 				}
 			
@@ -240,7 +270,7 @@ public class ContentsUtil {
 			for (int i = 1; i <= pages ; i++) {
 				
 				URL url = new URL("https://api.themoviedb.org/3/discover/"+type+"?api_key="+KEY
-						+"&language=ko&sort_by="+sortBy+".desc&page="+i);
+						+"&language=ko&sort_by="+sortBy+"&page="+i);
 				
 				BufferedReader bf;
 				
@@ -336,8 +366,7 @@ public class ContentsUtil {
 		
 		try {
 			URL url = new URL("https://api.themoviedb.org/3/discover/"+type+"?api_key="+KEY
-					+"&language=ko&sort_by="+sortBy+".desc");
-			
+					+"&language=ko&sort_by="+sortBy);
 			BufferedReader bf;
 			bf = new BufferedReader(new InputStreamReader(url.openStream(),"UTF-8"));
 			result = bf.readLine();

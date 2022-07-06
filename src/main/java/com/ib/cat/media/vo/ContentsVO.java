@@ -19,7 +19,16 @@ public class ContentsVO {
 	private String runtime;
 	private int count;
 	private Double star; //평점
+//	private GenresVO genresVO;
+	/**/
+	private List<GenresVO> ls;
 	
+	public List<GenresVO> getLs() {
+		return ls;
+	}
+	public void setLs(List<GenresVO> ls) {
+		this.ls = ls;
+	}
 	private int totalResults;
 	private int totalPages;
 	private int page;
@@ -120,6 +129,14 @@ public class ContentsVO {
 	public void setStar(Double star) {
 		this.star = star;
 	}
+//	public GenresVO getGenresVO() {
+//		return genresVO;
+//	}
+//	public void setGenresVO(GenresVO genresVO) {
+//		this.genresVO = genresVO;
+//	}
+//
+//	
 	
 	
 
