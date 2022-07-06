@@ -56,8 +56,8 @@
                     </div>
                 </form>
                 <li class="nav-link active">
-                    <a class="css-memberButton" href="#" >로그인</a>
-                    <a class="css-memberButton" href="#" >회원가입</a>
+                    <a class="css-memberButton" href="member/login" >로그인</a>
+                    <a class="css-memberButton" href="member/sign" >회원가입</a>
                 </li>
             </li>
         </ul>
