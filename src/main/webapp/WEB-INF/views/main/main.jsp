@@ -202,7 +202,67 @@
 	        </div>
 	    </div>
 	    
-	    
+	    <!-- 하단 게시물 + 방문자 수 -->
+	    <div class="css-pbseb6-StyledHomeListTitleRow">
+			<div class="row mt-2">
+	        	<div class="col-lg-6">
+	        		<div class="css-pbseb6-StyledHomeListTitleRow">
+	            		<p class="css-16qa0p7">최근 게시판 활동</p>
+	       			</div>
+	        		<table class="table table-striped table-hover mt-4">
+						<thead>
+			                <tr>
+			                    <th scope="col">No</th>
+			                    <th scope="col" style="margin-left:30px;">Title</th>
+			                    <th scope="col" style="margin-left:50px;">Writer</th>
+			                </tr>
+			            </thead>
+			            <tbody>
+			            <c:forEach var="ls" items="${ ls}">
+			            	<tr>
+								<td>${ls.no }</td>
+								<td>${ls.title }</td>
+								<td>${ls.name }</td>
+							</tr>
+							</c:forEach>
+			            </tbody>
+					</table>
+	        	</div>
+	        	<div class="col-lg-2 text-center"></div>
+	        	<div class="col-lg-4">
+	        		<div class="css-pbseb6-StyledHomeListTitleRow">
+	            		<p class="css-16qa0p7">Check out the visitors</p>
+	       			</div>
+	        		<table class="table table-striped table-hover mt-4">
+	        			<thead>
+	        				<tr>
+	        					<th>Today</th>
+	        					<th>Total</th>
+	        				</tr>
+	        				<tr>
+	        					<th>${today }</th>
+	        					<th>${total }</th>
+	        				</tr>
+	        			</thead>
+	        		</table>
+	        		<div>
+	        		
+	        			<div class="clock">
+					        <div class="hour">
+					            <div id="hr" class="hr"></div>
+					        </div>
+					        <div class="min">
+					            <div id="mn" class="mn"></div>
+					        </div>
+					        <div class="sec">
+					            <div id="sc" class="sc"></div>
+					        </div>
+					    </div>
+					    <script src="${pageContext.request.contextPath}/resources/js/hosun/clock.js"></script>
+	        		</div>
+	        	</div>	
+			</div>
+		</div>
 	</section>
 </body>	
 </html>
