@@ -15,6 +15,7 @@ import com.ib.cat.media.vo.ContentsVO;
 
 @Controller
 public class ListController {
+//	주석을 추가함
 	
 	private ContentsUtil contentsUtil;
 	@Autowired

@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="replycontent.dtd">
-	<!-- 지은 주석 추가 -->
+	<!-- 지은 주석 추가 !!-->
 	<select id="jieun">
 		select * from reply_content;
 	</select>
