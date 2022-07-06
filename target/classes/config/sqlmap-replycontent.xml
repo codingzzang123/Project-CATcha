@@ -4,7 +4,7 @@
 
 <mapper namespace="replycontent.dtd">
 <!-- 호선 주석 추가  -->
-<select id="def">
+<select id="hosun">
 	select * from reply_content
 </select>	
 </mapper>
