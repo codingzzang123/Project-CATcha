@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>   
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<script src="${pageContext.request.contextPath}/resources/js/hosun/jquery-3.6.0.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/hosun/main.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/hosun/scroll.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -22,17 +21,19 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light customNav"> 
         <div class="navbar__logo">
-            <img src="${pageContext.request.contextPath }/resources/image/main/logo.jpg" height="42px;">
-            <span style="margin-left: 1em;">CATcha</span>
+        	<a href="${pageContext.request.contextPath }/main">
+            	<img src="${pageContext.request.contextPath }/resources/image/main/logo.jpg" height="42px;">
+            	<span style="margin-left: 1em;">CATcha</span>
+           	</a>
         </div>
 
         <ul class="navbar__menu navbar-nav me-auto customUl">
-            <li><a class="nav-link active customLi" href="#"><b>Home</b></a></li>
+            <li><a class="nav-link active customLi" href="${pageContext.request.contextPath }/main"><b>Home</b></a></li>
             
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle customLi" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Movie</a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item fontKo" href="#">인기</a></li>
+                    <li><a class="dropdown-item fontKo" href="${pageContext.request.contextPath }/movie/list">인기</a></li>
                     <li><a class="dropdown-item fontKo" href="#">높은 평점</a></li>
                 </ul>
            </li>
@@ -40,7 +41,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle customLi" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tv</a>
                 <ul class="dropdown-menu fontKo" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item fontKo" href="#">인기</a></li>
+                    <li><a class="dropdown-item fontKo" href="${pageContext.request.contextPath }/tv/list">인기</a></li>
                     <li><a class="dropdown-item fontKo" href="#">높은 평점</a></li>
                 </ul>
             </li>
@@ -56,8 +57,8 @@
                     </div>
                 </form>
                 <li class="nav-link active">
-                    <a class="css-memberButton" href="member/login" >로그인</a>
-                    <a class="css-memberButton" href="member/sign" >회원가입</a>
+                    <a class="css-memberButton" href="${pageContext.request.contextPath }/member/login" >로그인</a>
+                    <a class="css-memberButton" href="${pageContext.request.contextPath }/member/sign" >회원가입</a>
                 </li>
             </li>
         </ul>
