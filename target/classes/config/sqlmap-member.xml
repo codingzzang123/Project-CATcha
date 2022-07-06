@@ -7,4 +7,12 @@
 		insert into member (id, pw, name, email, imgo, imgs) 
 		values (#{id}, #{pw}, #{name}, #{email}, #{imgo}, #{imgs})
 	</insert>
+	
+	<select id="idCheck" parameterType="String" resultType="int">
+		select count(*) from member where id=#{id}
+	</select>
+	
+	<select id="nameCheck" parameterType="String" resultType="int">
+		select count(*) from member where name=#{name}
+	</select>
 </mapper>
