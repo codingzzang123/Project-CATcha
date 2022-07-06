@@ -111,7 +111,7 @@ Movie
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
-    <c:forEach var="i" begin="startPage" end="endPage">
+    <c:forEach var="i" begin="1" end="10">
     	<li class="page-item"><a class="page-link" id="pagenation" href="${pageContext.request.contextPath }/movie/list?page=${i}&category=${category}">${i }</a></li>
     </c:forEach>
     <li class="page-item">
