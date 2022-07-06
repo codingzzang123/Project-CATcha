@@ -27,24 +27,33 @@ public class ListController {
 			@RequestParam(value="type", defaultValue="movie")String contentsType,
 			@RequestParam(value="page", defaultValue="1")Integer page) {
 		
+		System.out.println("cat:" + cri.getCategory());
+		
 		//기본값 인기도 내림차순
 		String category;
-		category = cri.getCategory();
+		category = cri.getCategory(); //cri.getCategory -> String sortBy
 		if (category==null) {
 			category="popularity.desc";
+			System.out.println("Controller 첫단 category: "+category);
+			System.out.println("Controller page: " + page);
 		}
-		if (page != 1) {
-			
-		}
+//		else if (category.equals("popularity.asc")) {
+//			category = "popularity.asc";
+//		} else if(category.equals("vote_average.desc")) {
+//			category = "vote_average.desc";
+//		} else {
+//			category = "vote_average.asc";
+//		}
 
 		List<ContentsVO> movieList = null;
-		movieList = contentsUtil.getInfoPageList(contentsType, category, page);//cri.getCategory -> String sortBy
+		movieList = contentsUtil.getInfoPageList(contentsType, category, page);
 		System.out.println("Ctrl - contentsType: "+contentsType);
 		System.out.println("Ctrl - category: "+category);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("movie/list");
 		
 		mav.addObject("movieList", movieList);
+		mav.addObject("category", category);
 		mav.addObject("scmd", cri);
 		mav.addObject("page", page);
 		//1페이지가 아닐 때 sortBy 확인해서 재정렬
