@@ -20,36 +20,32 @@ public class BoardDaoMybatis implements BoardDao{
 	
 	@Override
 	public List<BoardVo> list() {
-		return sqlSessionTemplate.selectList("list");
+		return sqlSessionTemplate.selectList("board.Dao.list");
 	}
 	@Override
 	public int delete(BoardVo boardVo) {
-		return sqlSessionTemplate.delete("delete", boardVo);
+		return sqlSessionTemplate.delete("board.Dao.delete", boardVo);
 	}
 	
-	@Override
-	public int deleteAll() {
-		return sqlSessionTemplate.delete("deleteAll");
-	}
 	
 	@Override
 	public int update(BoardVo boardVo) {
-		return sqlSessionTemplate.update("update", boardVo);
+		return sqlSessionTemplate.update("board.Dao.update", boardVo);
 	}
 	
 	@Override
 	public void insert(BoardVo boardVo) {
-		sqlSessionTemplate.update("insert", boardVo);
+		sqlSessionTemplate.update("board.Dao.insert", boardVo);
 	}
 	
 	@Override
-	public BoardVo select(int seq) {
-		BoardVo vo = (BoardVo) sqlSessionTemplate.selectOne("select", seq);
+	public BoardVo select(int no) {
+		BoardVo vo = (BoardVo) sqlSessionTemplate.selectOne("board.Dao.select", no);
 		return vo;
 	}
 	
 	@Override
-	public int updateReadCount(int seq) {
-		return sqlSessionTemplate.update("updateCount", seq);
+	public int updateReadCount(int no) {
+		return sqlSessionTemplate.update("board.Dao.updateCount", no);
 	}
 }

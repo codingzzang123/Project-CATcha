@@ -2,6 +2,44 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="board.dtd">
+<mapper namespace="board.Dao">
+	<select id="list" resultType="com.ib.cat.board.model.BoardVo">
+		SELECT * FROM BOARD
+		ORDER BY no desc
+	</select>
+	
+	<select id="select" parameterType="int" resultType="com.ib.cat.board.model.BoardVo">
+		SELECT * FROM 
+		BOARD WHEERE no = #{SEQ_BOARD}
+	</select>
+	
+	<insert id="insert" parameterType="com.ib.cat.board.model.BoardVo">
+	INSERT INTO BOARD
+	(NO, NAME, CATE, TITLE, CONTENT, REGDATE, VIEWS, LIKES, IMGO, IMGS, REPLYS)
+	VALUES
+	(SEQ_BOARD.nextval,#{NAME}, #{CATE}, #{TITLE}, #{CONTENT}, #{REGDATE}, #{VIEWS}, #{LIKES}, #{IMGO}, #{IMGS}, #{REPLYS} )
+	<selectKey keyProperty="no" resultType="Integer">
+		SELECT NVL(MAX(SEQ_BOARD), 0) FROM BOARD
+	</selectKey>
+	</insert>
+	
+	<update id="update" parameterType="com.ib.cat.board.model.BoardVo">
+		UPDATE BOARD SET 
+		NAME = #{NAME},
+		CATE = #{CATE},
+		TITLE = #{TITLE},
+		CONTENT = #{CONTENT},
+		REGDATE = #{REGDATE},
+		VIEWS = #{VIEWS},
+		LIKES = #{LIKES},
+		IMGO = #{IMGO},
+		IMGS = #{IMGS},
+		REPLYS = #{REPLYS}
+	</update>
+	
+	<delete id="delete" parameterType="com.ib.cat.board.model.BoardVo">
+		DELETE FROM BOARD WHERE no = #{NO}
+	</delete>
+	
 	
 </mapper>
