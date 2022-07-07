@@ -23,8 +23,8 @@
         <div class="navbar__logo">
         	<a href="${pageContext.request.contextPath }/main">
             	<img src="${pageContext.request.contextPath }/resources/image/main/logo.jpg" height="42px;">
+            </a>	
             	<span style="margin-left: 1em;">CATcha</span>
-           	</a>
         </div>
 
         <ul class="navbar__menu navbar-nav me-auto customUl">
@@ -46,7 +46,7 @@
                 </ul>
             </li>
 
-            <li><a class="nav-link active customLi" href=""><b>Board</b></a></li>
+            <li><a class="nav-link active customLi" href="${pageContext.request.contextPath }/board"><b>Board</b></a></li>
         </ul>
         <ul class="navbar__menu css-member">
             <li class="nav-link active">
