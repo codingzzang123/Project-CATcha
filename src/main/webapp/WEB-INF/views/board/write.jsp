@@ -3,31 +3,31 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
-<html><head><title>새 게시물 작성</title></head>
+<html><head><title>새 글 작성</title></head>
 <body>
-		<form:form commandName="boardVo" method="POST">
+<h2>새 글 작성</h2>
+	<form:form commandName="boardVo" method="POST">		
 			<table border="1">
-				<tr>
+				<tr><td>카테고리</td>
 						<th><form:label path="cate">카테고리</form:label></th>
 						<td><form:input path="cate"/>
-						<form:errors path="cate"/></td>
+						<form:errors path="cate"/><td>
 				</tr>
-				<tr>
-						<th><form:label path="title">제목을 입력해 주십시오.</form:label></th>
+				<tr><td>제목</td>
+						<th><form:label path="title">제목</form:label></th>
 						<td><form:input path="title"/>
-						<form:errors path="title"/></td>
+						<form:errors path="title"/><td>
+				</tr>
+				<tr><td>내용</td>
+						<th><form:label path="content">내용</form:label></th>
+						<td><form:input path="content"/>
+						<form:errors path="content"/><td>
 				</tr>
 				<tr>
-						<th><form:label path="content">내용을 입력해주세요.</form:label></th>
-						<td><form:input path="content"/>
-						<form:errors path="content"/></td>
-				</tr>
+				<td>
+				<button type="reset">취소</button>
+				<button type="submit">등록</button>
 			</table>
-			<div>
-					<input type="submit" value="취소">
-					<input type="submit" value="등록">
-			</div>
-		</form:form>
-
+	</form:form>
 </body>
 </html>

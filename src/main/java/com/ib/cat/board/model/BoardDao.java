@@ -8,7 +8,7 @@ public interface BoardDao {
 	
 	public abstract int delete(BoardVo boardVo);
 	
-	public abstract int deleteAll();
+	
 	
 	public abstract int update(BoardVo boardVo);
 	
