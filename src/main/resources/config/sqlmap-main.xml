@@ -20,4 +20,12 @@
 	<insert id="insertVisit">
 		insert into visit values(sysdate)
 	</insert>
+	<!--  
+	<select id="selectBoardFromSearch" resultType="com.ib.cat.main.model.MainDTO" parameterType="String">
+	
+	</select>
+	
+	<select id="countBoardFromSearch" resultType="int" parameterType="String">
+	
+	</select>-->
 </mapper>

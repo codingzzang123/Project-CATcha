@@ -26,7 +26,7 @@ public class MainController {
 	@Autowired
 	private CheckCookie co;
 	
-	/*mybatis test*/
+	
 	@RequestMapping("/main")
 	public ModelAndView mainForm(HttpServletRequest request,HttpServletResponse response) {
 		GetInfoUtil util = new GetInfoUtil();
@@ -52,7 +52,6 @@ public class MainController {
 		if(!co.isCookie(request)) {
 			/*쿠키가 없다면*/
 			co.createCookie(response);
-			System.out.println("쿠키 만들어짐 @@"+co);
 			dao.insert();
 		}
 		mav.addObject("ls",dao.getTopFive());

@@ -17,14 +17,17 @@
 	<jsp:include page="/WEB-INF/views/templates/navbar.jsp"></jsp:include>
 	<c:set var="Image_URL" value="https://image.tmdb.org/t/p/original"/>
 	
-	<section class="css-7klu3x">
+	
+	<section class="css-7klu3x" id="wrapper">
 		<section class="new_index">
 		<div class="css-header css-lufi3b">
 			<div class="css-pbseb6-StyledHomeListTitleRow">
 				<p class="css-header-Font1">Welcome.</p>
 				<p class="css-header-Font2">Millions of movies, TV shows and people to discover. Explore now.</p>
 				<div class="search-container">
-				    <input class="search-input" type="text" placeholder="     Search for Movie, TV "/>
+					<form action="<c:url value="/search"/>" method="post">
+				    	<input class="search-input" type="text" name="keyword" placeholder="     Search for Movie, TV "/>
+				    </form>
 				</div>
 			</div>
 		</div>
@@ -205,7 +208,7 @@
 	    <!-- 하단 게시물 + 방문자 수 -->
 	    <div class="css-pbseb6-StyledHomeListTitleRow">
 			<div class="row mt-2">
-	        	<div class="col-lg-6">
+	        	<div class="col-lg-7">
 	        		<div class="css-pbseb6-StyledHomeListTitleRow">
 	            		<p class="css-16qa0p7">최근 게시판 활동</p>
 	       			</div>
@@ -228,7 +231,7 @@
 			            </tbody>
 					</table>
 	        	</div>
-	        	<div class="col-lg-2 text-center"></div>
+	        	<div class="col-lg-1 text-center"></div>
 	        	<div class="col-lg-4">
 	        		<div class="css-pbseb6-StyledHomeListTitleRow">
 	            		<p class="css-16qa0p7">Check out the visitors</p>
@@ -264,5 +267,7 @@
 			</div>
 		</div>
 	</section>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<jsp:include page="/WEB-INF/views/templates/footer.jsp"></jsp:include>
 </body>	
 </html>

@@ -14,13 +14,13 @@ public class CheckCookie {
 	
 	public boolean isCookie(HttpServletRequest request) {
 		Cookie[] list = request.getCookies();
-		for(Cookie cookie:list) {
-			if(cookie.getName().equals("userIp")) {
-				System.out.println("쿠키 있음");
-				return true;
+		if(list != null) {
+			for(Cookie cookie:list) {
+				if(cookie.getName().equals("userIp")) {
+					return true;
+				}
 			}
 		}
-		System.out.println("쿠키 없음");
 		/* ip주소 가져오는 부분 */
 		request = ((ServletRequestAttributes)RequestContextHolder.currentRequestAttributes()).getRequest();
 		ip = request.getHeader("X-FORWARDED-FOR");
@@ -34,10 +34,9 @@ public class CheckCookie {
 		Cookie cookie = new Cookie("userIp",ip);
 		cookie.setDomain("localhost");
 		cookie.setPath("/");
-		// 30초간 저장
-		cookie.setMaxAge(20);
+		// 일단 1시간 저장
+		cookie.setMaxAge(60*60);
 		cookie.setSecure(true);
-		System.out.println("쿠키 만들어짐 ");
 		response.addCookie(cookie);
 	}
 }
