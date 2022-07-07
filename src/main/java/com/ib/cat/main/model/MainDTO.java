@@ -1,10 +1,12 @@
 package com.ib.cat.main.model;
 
+import java.util.Date;
+
 public class MainDTO {
 	private int no;
 	private String title;
 	private String name;
-	
+	private Date regdate;
 	
 	public int getNo() {
 		return no;
@@ -23,6 +25,12 @@ public class MainDTO {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public Date getRegdate() {
+		return regdate;
+	}
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
 	}
 	
 	

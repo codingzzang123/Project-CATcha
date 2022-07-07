@@ -8,4 +8,24 @@
     		select no,title,name from board order by no desc)
         		<![CDATA[where rownum<=5]]> 
 	</select>
+	
+	<select id="selectVisitToday" resultType="int">
+		SELECT count(*) FROM visit WHERE TO_CHAR(SYSDATE, 'yy/MM/dd') = TO_CHAR(v_date, 'yy/MM/dd')
+	</select>
+	
+	<select id="selectVisitTotal" resultType="int">
+		select count(*) from visit
+	</select>
+	
+	<insert id="insertVisit">
+		insert into visit values(sysdate)
+	</insert>
+	<!--  
+	<select id="selectBoardFromSearch" resultType="com.ib.cat.main.model.MainDTO" parameterType="String">
+	
+	</select>
+	
+	<select id="countBoardFromSearch" resultType="int" parameterType="String">
+	
+	</select>-->
 </mapper>

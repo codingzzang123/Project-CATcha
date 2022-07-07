@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans 
-	xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:tx="http://www.springframework.org/schema/tx"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
-	
-	<tx:annotation-driven transaction-manager="transactionManager"/>
-	<!-- Root Context: defines shared resources visible to all other web components -->
-	<bean id="dataSource"
-		class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
-		
-		<property name="driverClass" value="oracle.jdbc.driver.OracleDriver"/>
-		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe"/>
-		
-		<property name="user" value="c##cat" />
-		<property name="password" value="1234" />
+   xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:tx="http://www.springframework.org/schema/tx"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+   
+   <tx:annotation-driven transaction-manager="transactionManager"/>
+   <!-- Root Context: defines shared resources visible to all other web components -->
+   <bean id="dataSource"
+      class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+      
+      <property name="driverClass" value="oracle.jdbc.driver.OracleDriver"/>
+      <property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+      
+      <property name="user" value="c##cat" />
+      <property name="password" value="1234" />
 
+<<<<<<< HEAD
 		<property name="maxPoolSize" value="100" />
 		<property name="maxIdleTime" value="600" />
 		<property name="idleConnectionTestPeriod" value="300" />
@@ -78,3 +79,44 @@
 	</bean>
 	
 </beans>
+=======
+      <property name="maxPoolSize" value="100" />
+      <property name="maxIdleTime" value="600" />
+      <property name="idleConnectionTestPeriod" value="300" />
+   </bean>
+   
+   <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+      <property name="dataSource" ref="dataSource"/>
+   </bean>
+   
+   <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+      <property name="dataSource" ref="dataSource"/>
+      <property name="configLocation" value="classpath:config/mybatis-config.xml"/>
+      <property name="mapperLocations">
+         <list>
+            <value>classpath:config/sqlmap-alert.xml</value>
+            <value>classpath:config/sqlmap-board.xml</value>
+            <value>classpath:config/sqlmap-likeboard.xml</value>
+            <value>classpath:config/sqlmap-likecontents.xml</value>
+            <value>classpath:config/sqlmap-member.xml</value>
+            <value>classpath:config/sqlmap-reply.xml</value>
+            <value>classpath:config/sqlmap-replycontent.xml</value>
+            <value>classpath:config/sqlmap-visitor.xml</value>
+            <value>classpath:config/sqlmap-main.xml</value>
+         </list>
+      </property>
+   </bean>
+   
+   <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate"
+      destroy-method="clearCache">
+      <constructor-arg ref="sqlSessionFactory"/>
+   </bean>
+   
+   <!-- FileUpload 추가 -->
+   <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/>
+   
+   <!-- Valid 추가 -->
+   <bean id="validation" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
+   
+</beans>
+>>>>>>> refs/heads/master

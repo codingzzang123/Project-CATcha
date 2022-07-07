@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,7 @@
 <title>목록</title>
 </head>
 <body>
+<h2>게시물 목록</h2>
 		<table border="1">
 			<tr>
 				<th>번호</th>
@@ -18,14 +20,14 @@
 				<th>조회</th>
 				<th>추천</th>	
 			</tr>
-			<c:forEach var="board" items="${boardList }" varStatus="Loop">
+			<c:forEach var="board" items="${boardlist }">
 				<tr>
-					<td>${board.seq }</td>
+					<td>${board.no }</td>
 					<td>${board.cate }</td>
-					<td><a href="<c:url value="/board/read/${board.seq }"/>">
+					<td><a href="<c:url value="/board/read/${bo ard.no }"/>">
 					${board.title }</a></td>
-					<td>${board.writer }</td>
-					<td>${board.regDate }</td>
+					<td>${board.name }</td>
+					<td><fmt:formatDate value="${now }" pattern="yyyy-MM-dd"/></td>
 					<td>${board.views }
 					<td>${board.likes }</td>
 				</tr>

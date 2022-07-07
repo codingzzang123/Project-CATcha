@@ -56,10 +56,7 @@ public class ContentsUtil {
 		}
 		return getTotalResults;
 	}
-	
-	//title,overview,release_date,genre (contentsVO에 setting완)
-	//crew/cast, image(poster_path) => 별도 객체로 setting 완 (메서드 활용)
-	//runtime, => 세팅하기!
+
 	public ContentsVO getSpecificContent(String type, int contentsNum) {
 		System.out.println("getSpecificContent Util 작동 중");
 		ContentsVO sContent = null;
@@ -79,12 +76,7 @@ public class ContentsUtil {
 			JSONParser jsonParser = new JSONParser();
 			JSONObject contents = (JSONObject)jsonParser.parse(result);
 
-//			JSONArray list = (JSONArray)jsonObject.get("results");
-			
-			
 				ContentsVO vo = new ContentsVO();
-//				JSONObject contents = (JSONObject)list.get(1);
-					
 				vo.setContentsNum(Integer.parseInt(String.valueOf(contents.get("id"))));
 				vo.setContentsType(type);
 				vo.setOverview(contents.get("overview").toString());
@@ -118,10 +110,14 @@ public class ContentsUtil {
 				
 				//runtime
 				String runtime = String.valueOf(contents.get("runtime"));
+//				int runtime = Integer.parseInt((String) contents.get("runtime"));
+//				int hour = runtime/60;
+//				int minute = runtime%60;
+//				vo.setHour(hour);
+//				vo.setMinute(minute);
 				vo.setRuntime(runtime);
 				
 				JSONArray genreListJ = (JSONArray)contents.get("genres"); 
-				// "genres": [ { "id":18, "name":"드라마" },{"id":...}] 형태
 				List<GenresVO> tmpls = new ArrayList<>();
 				for (int k = 0 ; k < genreListJ.size() ; k++) {		 
 					JSONObject tmp = (JSONObject)genreListJ.get(k);
@@ -164,7 +160,6 @@ public class ContentsUtil {
 		
 		try {
 			infoList = new ArrayList<ContentsVO>();
-
 			URL url = new URL("https://api.themoviedb.org/3/discover/"+type+"?api_key="+KEY
 						+"&language=ko&sort_by="+sortBy+"&page="+page);
 				System.out.println("MovieData - sortBy: " + sortBy);
@@ -220,9 +215,6 @@ public class ContentsUtil {
 					} else {
 						vo.setPosterPath(contents.get("poster_path").toString());
 					}
-//					vo.setPage(Integer.parseInt((String)jsonObject.get("page")));
-//					vo.setPage(i);
-					
 					//장르 id를 List<Integer>형태로 저장 -> 장르 비교를 위한 작업
 					JSONArray genreListJ = (JSONArray)contents.get("genre_ids");
 					genreList = new ArrayList<Integer>();
@@ -236,19 +228,14 @@ public class ContentsUtil {
 				}
 			
 		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (java.text.ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return infoList;
@@ -353,7 +340,6 @@ public class ContentsUtil {
 			page = Integer.parseInt(pageS);
 			
 		} catch (ParseException | IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -384,6 +370,7 @@ public class ContentsUtil {
 	}
 	
 	public List<String> getImages(String type, int id) {
+		//이미지 주소 - String
 		List<String> imageList = null;
 		
 		try {
@@ -402,7 +389,7 @@ public class ContentsUtil {
 		for (int j = 0 ; j < list.size() ; j++) {
 			String filePath = new String();
 			JSONObject images = (JSONObject)list.get(j);
-			filePath = images.get("filePath").toString();
+			filePath = images.get("file_path").toString();
 			imageList.add(filePath);
 		}
 		} catch (Exception e) {

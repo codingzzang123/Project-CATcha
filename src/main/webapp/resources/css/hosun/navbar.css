@@ -25,6 +25,18 @@ html{
     font-family: Georgia, Serif;
 }
 
+.navbar__logo > a{
+	color:#000000; text-decoration: none;
+}
+
+.navbar__logo > a:link{
+	color:#000000; text-decoration: none;
+}
+
+.navbar__logo > a:hover{
+	color:#ff0000; text-decoration: none;
+}
+
 .navbar__menu li {
     padding: 10px 20px;
 }
