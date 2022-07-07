@@ -17,69 +17,9 @@
       <property name="user" value="c##cat" />
       <property name="password" value="1234" />
 
-<<<<<<< HEAD
-		<property name="maxPoolSize" value="100" />
-		<property name="maxIdleTime" value="600" />
-		<property name="idleConnectionTestPeriod" value="300" />
-	</bean>
-	
-	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource"/>
-	</bean>
-	
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"/>
-		<property name="configLocation" value="classpath:config/mybatis-config.xml"/>
-		<property name="mapperLocations">
-			<list>
-				<value>classpath:config/sqlmap-alert.xml</value>
-				<value>classpath:config/sqlmap-board.xml</value>
-				<value>classpath:config/sqlmap-likeboard.xml</value>
-				<value>classpath:config/sqlmap-likecontents.xml</value>
-				<value>classpath:config/sqlmap-member.xml</value>
-				<value>classpath:config/sqlmap-reply.xml</value>
-				<value>classpath:config/sqlmap-replycontent.xml</value>
-				<value>classpath:config/sqlmap-visitor.xml</value>
-				<value>classpath:config/sqlmap-main.xml</value>
-			</list>
-		</property>
-	</bean>
-	
-	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate"
-		destroy-method="clearCache">
-		<constructor-arg ref="sqlSessionFactory"/>
-	</bean>
-	
-	<!-- FileUpload 추가 -->
-	<bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/>
-	
-	<!-- Valid 추가 -->
-	<bean id="validation" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
-	
-	<bean id="mailService" class="com.ib.cat.acc.service.MailService"/>
-	<!-- Mail 추가 -->
-	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-		<property name="host" value="smtp.naver.com" />
-		<property name="port" value="587" />
-		<property name="username" value="jiseong1028@naver.com" />
-		<property name="password" value="js1002050*" />
 
-
-		<!-- email 요청시는 SMTP -->
-		<property name="javaMailProperties">
-			<props>
-				<prop key="mail.transport.protocol">smtp</prop>
-				<prop key="mail.smtp.auth">true</prop>
-				<prop key="mail.smtp.starttls.enable">true</prop>
-				<prop key="mail.debug">true</prop>
-				<prop key="mail.smtp.ssl.trust">smtp.naver.com</prop>
-				<prop key="mail.smtp.ssl.protocols">TLSv1.2</prop>
-			</props>
-		</property>
-	</bean>
 	
-</beans>
-=======
+
       <property name="maxPoolSize" value="100" />
       <property name="maxIdleTime" value="600" />
       <property name="idleConnectionTestPeriod" value="300" />
@@ -119,4 +59,4 @@
    <bean id="validation" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
    
 </beans>
->>>>>>> refs/heads/master
+
