@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,7 +39,7 @@ public class ContentsController {
 		//contentsNum(id) 컨텐츠VO 가져옴
 		ContentsVO contents = (ContentsVO) contentsUtil.getSpecificContent(contentsType, contentsNum); 
 		
-//		List<String> images = contentsUtil.getImages(contentsType, contentsNum);
+		List<String> imageList = contentsUtil.getImages(contentsType, contentsNum);
 		
 		List<CreditsVO> cast = contentsUtil.getCredits(contentsType, contentsNum, "cast");
 		List<CreditsVO> crew = contentsUtil.getCredits(contentsType, contentsNum, "crew");
@@ -83,7 +81,7 @@ public class ContentsController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("movie/content");
 		mav.addObject("contents", contents);
-//		mav.addObject("images", images);
+		mav.addObject("imageList", imageList);
 		mav.addObject("cast", cast);
 		mav.addObject("crew", crew);
 //		mav.addObject("reco", reco); //추천 컨텐츠
