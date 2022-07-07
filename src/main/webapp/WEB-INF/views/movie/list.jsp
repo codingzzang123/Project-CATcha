@@ -11,37 +11,77 @@
 <script src="${pageContext.request.contextPath}/resources/js/hosun/jquery-3.6.0.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/hosun/main.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/hosun/scroll.js"></script>
-<script>
-/* function move(page,category) {
-	var url = "/cat/movie/list";
-	$("#pagenation").attr("action",url);
-	$("#pagenation").attr("method","POST");
+<%
+	request.setCharacterEncoding("utf-8");
+%>
+<link href="${pageContext.request.contextPath}/resources/css/hosun/main.css" rel="stylesheet"/>
+<style>
+	nav{
+		width: 200px;
+		background-color:#eee;
+		border-right:1px solid #ddd;
+		
+		position:fixed;
+		height:20%
+	}
+	h5{font-size:10px; padding:20px;}
+	.category{}
+	.category select{}
 	
-	if (!page) {
-		page = 1;
-	} else {
-		page = movieList.page;
+	.category select option{
+		height:30px;
+		line-height:30px;
+		display:block;
+		padding:0 20px;
+		font-size:12px;
+		color:#555;
+	}
+	.category select option:hover{background-color:yellowgreen; color:white;}
+	
+	.paginate {
+		text-align:center;
+		font-size: 14px;
 	}
 	
+	.paginate a{
+		border: 1px solid #ccc;
+		color:#000;
+		font-weight: 600;
+		text-decoration: none;
+		padding:3px 7px;
+		margin-left: 3px;
+		vertical-align: middle;
+	}
 	
-	$("#pagenation").attr("page", page);
+	.paginate span {
+		border: 1px solid #e28d8;
+		color:#cb3536;
+		font-weight: 600;
+		text-decoration: none;
+		padding: 3px 7px;
+		margin-left: 3px;
+		vertical-align: middle;
+	}
 	
+	.paginate : first-child {
+		margin-left: 0;
+	}
 	
-	$("#pagenation").attr("category", scmd.category);
-	
-	$("#pagenation").submit();
- */
-
-</script>
-<link href="${pageContext.request.contextPath}/resources/css/hosun/main.css" rel="stylesheet"/>
+	.container {
+		width: 700px;
+		margin: 30px auto;
+	}
+		
+</style>
 <title>Insert title here</title>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/templates/navbar.jsp"></jsp:include>
 <br><br><br>
+<nav>
 <div class="sort">
-Movie
-<form:form modelAttribute="scmd">
+<h5>Movie</h5>
+<form:form action="${pageContext.request.contextPath}/movie/list" modelAttribute="scmd">
 	<select name="category" id="category">
 		<option value="popularity.desc" <c:if test="${category eq 'popularity.desc'}">selected="selected"</c:if>>인기도 내림차순</option>
 		<option value="popularity.asc" <c:if test="${category eq 'popularity.asc'}">selected="selected"</c:if>>인기도 오름차순</option>
@@ -52,6 +92,7 @@ Movie
 	<input type="submit" value="확인">
 </form:form>
 </div>
+</nav>
 <br><br><br>
 <div class="css-lufi3b">
 	        <div class="css-pbseb6-StyledHomeListTitleRow">
@@ -101,28 +142,13 @@ Movie
 	            </div>
 	        </div>
 	    </div>
-	    
-
-<nav aria-label="Page navigation">
-
-  <ul class="pagination">
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <c:forEach var="i" begin="1" end="10">
-    	<li class="page-item"><a class="page-link" id="pagenation" href="${pageContext.request.contextPath }/movie/list?page=${i}&category=${category}">${i }</a></li>
-    </c:forEach>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
-
+	    	
+<div class="container">
+	<h3 style="text-align: center;">paging</h3>
+	
+	<div style="padding-top: 20px;">
+		${paging}
+	</div>
+</div>
 </body>
-
-
 </html>
