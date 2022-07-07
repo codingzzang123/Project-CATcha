@@ -1,12 +1,12 @@
-package com.ib.cat.main.model;
+package com.ib.cat.main.dto;
 
 import java.util.Date;
 
 public class MainDTO {
 	private int no;
-	private String title;
+	private String title; 
 	private String name;
-	private Date regdate;
+	private Date regdate; // release_date
 	
 	public int getNo() {
 		return no;

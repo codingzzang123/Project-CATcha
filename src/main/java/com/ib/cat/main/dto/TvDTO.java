@@ -1,12 +1,13 @@
-package com.ib.cat.main.util;
+package com.ib.cat.main.dto;
 
-public class MovieDTO {
+public class TvDTO {
 	private String id;
 	private String overview; //줄거리
-	private String release_date;
-	private String title;
+	private String release_date; // json에서는 first_air_date
+	private String title; // json에서는 name
 	private float vote_average; //평점
 	private String poster_path;
+	
 	public String getId() {
 		return id;
 	}
@@ -43,6 +44,4 @@ public class MovieDTO {
 	public void setPoster_path(String poster_path) {
 		this.poster_path = poster_path;
 	}
-	
-	
 }

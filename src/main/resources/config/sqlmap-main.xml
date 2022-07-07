@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="main.dtd">
-	<select id="selectTopFive" resultType="com.ib.cat.main.model.MainDTO">
+	<select id="selectTopFive" resultType="com.ib.cat.main.dto.MainDTO">
 		select no,title,name from (
     		select no,title,name from board order by no desc)
         		<![CDATA[where rownum<=5]]> 
@@ -20,12 +20,17 @@
 	<insert id="insertVisit">
 		insert into visit values(sysdate)
 	</insert>
-	<!--  
-	<select id="selectBoardFromSearch" resultType="com.ib.cat.main.model.MainDTO" parameterType="String">
 	
+	 
+	<select id="selectBoardFromSearch" resultType="com.ib.cat.main.dto.MainDTO" parameterType="com.ib.cat.main.dto.SearchBoardDTO">
+		select no, title, name, regdate  from 
+			(select rownum rnum, no, title, name, regdate 
+				FROM(select no, title, name, regdate from board where name like '%'||#{query}||'%' order by no DESC))
+					<![CDATA[where rnum>=#{start} and rnum<=#{end}]]>
 	</select>
 	
 	<select id="countBoardFromSearch" resultType="int" parameterType="String">
-	
-	</select>-->
+		select count(*) from board where 
+			name like '%'||#{keyword}||'%'
+	</select>
 </mapper>
