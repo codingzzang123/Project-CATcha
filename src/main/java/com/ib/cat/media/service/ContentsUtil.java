@@ -62,7 +62,7 @@ public class ContentsUtil {
 		ContentsVO sContent = null;
 		List<String> genreList = null;
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		String date = "0001-01-01";
+		String date = "0001-01-01";//기본값
 		try {
 			sContent = new ContentsVO();
 			
@@ -109,13 +109,13 @@ public class ContentsUtil {
 				}
 				
 				//runtime
+//				String runtime = String.valueOf(contents.get("runtime"));
+//				vo.setRuntime(runtime);
 				String runtime = String.valueOf(contents.get("runtime"));
-//				int runtime = Integer.parseInt((String) contents.get("runtime"));
-//				int hour = runtime/60;
-//				int minute = runtime%60;
-//				vo.setHour(hour);
-//				vo.setMinute(minute);
-				vo.setRuntime(runtime);
+				int hour = Integer.parseInt(runtime) / 60;
+				int minute = Integer.parseInt(runtime) % 60;
+				vo.setHour(hour);
+				vo.setMinute(minute);
 				
 				JSONArray genreListJ = (JSONArray)contents.get("genres"); 
 				List<GenresVO> tmpls = new ArrayList<>();

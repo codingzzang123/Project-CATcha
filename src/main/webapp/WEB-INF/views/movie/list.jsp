@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
@@ -16,14 +17,7 @@
 %>
 <link href="${pageContext.request.contextPath}/resources/css/hosun/main.css" rel="stylesheet"/>
 <style>
-	nav{
-		width: 200px;
-		background-color:#eee;
-		border-right:1px solid #ddd;
-		
-		position:fixed;
-		height:20%
-	}
+	
 	h5{font-size:10px; padding:20px;}
 	.category{}
 	.category select{}
@@ -71,6 +65,7 @@
 		width: 700px;
 		margin: 30px auto;
 	}
+
 		
 </style>
 <title>Insert title here</title>
@@ -94,55 +89,24 @@
 </div>
 </nav>
 <br><br><br>
-<div class="css-lufi3b">
-	        <div class="css-pbseb6-StyledHomeListTitleRow">
-	            <p class="css-16qa0p7">Movie List - ${category}</p>
-	        </div>
-	        <div class="css-1qq59e8">
-	            <div class="css-1kd6k5d">
-	                <div class="css-9dnzub scroll">
-	                    <div class="css-174lxc3">
-	                        <div class="css-119xxd7">
-	                            <ul class="css-1ya1z7z-VisualUl">
-	                                <li class="css-8y23cj">
-	                                    <c:forEach var="movieList" begin="0" end="19" step="1" items="${movieList}">
-	                                        <a href="<c:url value='/movie/content/${movieList.contentsNum}'/>">
-	                                            <div class="css-1qmeemv">
-	                                                <div class="css-1rdb949-StyledLazyLoadingImage ezcopuc0">
-	                                                    <img src="https://image.tmdb.org/t/p/original${movieList.posterPath }" class="css-qhzw1o-StyledImg ezcopuc1">
-	                                                </div>
-	                                            </div>
-	                                            <div class="css-ixy093">
-	                                                <div class="css-5yuqaa">${movieList.title }</div>
-	                                                <div class="css-1rxwuxd">
-	                                                    <fmt:formatDate value="${vote_average.nowPlay }" pattern="yyyy-MM-dd" />
-	                                                </div>
-	                                                <div class="css-u4moi6">
-	                                                	개봉일 : ${movieList.releaseDate }
-	                                                </div>
-	                                            </div>
-	                                        </a>
-	                                    </c:forEach>
-	                                </li>
-	                            </ul>
-	
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="css-148ng4f left" style="display: none;">
-	                    <button type="button" class="css-vp7uyl" style="margin-bottom: 60px;">
-	                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDEyIDE2Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMEgxMlYxNkgweiIgdHJhbnNmb3JtPSJyb3RhdGUoMTgwIDYgOCkiLz4KICAgICAgICA8cGF0aCBmaWxsPSIjMjkyQTMyIiBzdHJva2U9IiMyOTJBMzIiIHN0cm9rZS13aWR0aD0iLjM1IiBkPSJNMy40MjkgMTMuNDA5TDQuMzU0IDE0LjI1OCAxMC42OCA4LjQ2IDExLjE0MyA4LjAzNiA0LjM1NCAxLjgxMyAzLjQyOSAyLjY2MiA5LjI5MSA4LjAzNnoiIHRyYW5zZm9ybT0icm90YXRlKDE4MCA2IDgpIi8+CiAgICA8L2c+Cjwvc3ZnPgo=" alt="forward">
-	                    </button>
-	                </div>
-	                <div class="css-147ng4f right">
-	                    <button type="button" class="css-vp7uyl" style="margin-bottom: 60px;">
-	                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDEyIDE2Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMEgxMlYxNkgweiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiMyOTJBMzIiIHN0cm9rZT0iIzI5MkEzMiIgc3Ryb2tlLXdpZHRoPSIuMzUiIGQ9Ik0zLjQyOSAxMy40MDlMNC4zNTQgMTQuMjU4IDEwLjY4IDguNDYgMTEuMTQzIDguMDM2IDQuMzU0IDEuODEzIDMuNDI5IDIuNjYyIDkuMjkxIDguMDM2eiIvPgogICAgPC9nPgo8L3N2Zz4K" alt="forward">
-	                    </button>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-	    	
+
+Movie List - ${category}
+<div class="container">
+	<div class="main-content">
+	<c:forEach var="movieList" begin="0" end="19" step="1" items="${movieList}">
+		<article class="component">
+			<a href="<c:url value='/movie/content/${movieList.contentsNum}'/>">
+ 				<img src="https://image.tmdb.org/t/p/w200${movieList.posterPath}"> 
+ 					<div class="description">
+ 						<p>${movieList.title}</p>
+ 						<p>개봉일 :<fmt:formatDate value="${movieList.releaseDate}" pattern="yyyy.MM.dd"/></p>
+ 					</div>
+			</a>
+		</article>
+	</c:forEach>
+	</div>
+</div>
+
 <div class="container">
 	<h3 style="text-align: center;">paging</h3>
 	
