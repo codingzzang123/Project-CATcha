@@ -1,4 +1,4 @@
-package com.ib.cat.main.model;
+package com.ib.cat.main.dto;
 
 public class MainVisitorDTO {
 	private int today;

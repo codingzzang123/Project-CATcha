@@ -11,11 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ib.cat.main.dto.MovieDTO;
 import com.ib.cat.main.model.MainDao;
-import com.ib.cat.main.sort.SortByVote;
 import com.ib.cat.main.util.CheckCookie;
 import com.ib.cat.main.util.GetInfoUtil;
-import com.ib.cat.main.util.MovieDTO;
+import com.ib.cat.main.util.SortMovieByVote;
 
 @Controller
 public class MainController {
@@ -39,8 +39,8 @@ public class MainController {
 		popular = util.getMovieList(2);
 		highLate = util.getMovieList(3);
 
-		Collections.sort(nowPlay, new SortByVote());
-		Collections.sort(popular, new SortByVote());
+		Collections.sort(nowPlay, new SortMovieByVote());
+		Collections.sort(popular, new SortMovieByVote());
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("main/main");

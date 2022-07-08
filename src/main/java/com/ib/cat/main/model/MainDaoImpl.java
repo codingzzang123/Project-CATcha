@@ -6,6 +6,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ib.cat.main.dto.MainDTO;
+import com.ib.cat.main.dto.SearchBoardDTO;
+
 @Service
 public class MainDaoImpl implements MainDao{
 	
@@ -33,5 +36,17 @@ public class MainDaoImpl implements MainDao{
 	public void insert() {
 		// TODO Auto-generated method stub
 		sqlSessionTemplate.insert("main.dtd.insertVisit");
+	}
+	
+	@Override
+	public int searchBoardCount(String query) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne("countBoardFromSearch",query);
+	}
+	
+	@Override
+	public List<MainDTO> searchBoard(SearchBoardDTO sbd) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectList("selectBoardFromSearch",sbd);
 	}
 }
