@@ -22,11 +22,11 @@ public class BoardDaoMybatis implements BoardDao{
 	public List<BoardVo> list() {
 		return sqlSessionTemplate.selectList("board.Dao.list");
 	}
+	
 	@Override
 	public int delete(BoardVo boardVo) {
 		return sqlSessionTemplate.delete("board.Dao.delete", boardVo);
 	}
-	
 	
 	@Override
 	public int update(BoardVo boardVo) {

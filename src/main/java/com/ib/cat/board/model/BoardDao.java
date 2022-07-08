@@ -8,8 +8,6 @@ public interface BoardDao {
 	
 	public abstract int delete(BoardVo boardVo);
 	
-	
-	
 	public abstract int update(BoardVo boardVo);
 	
 	public abstract void insert(BoardVo boardVo);
