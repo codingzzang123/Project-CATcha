@@ -24,7 +24,7 @@
 				<tr>
 					<td>${board.no }</td>
 					<td>${board.cate }</td>
-					<td><a href="<c:url value="/board/read/${bo ard.no }"/>">
+					<td><a href="<c:url value="/board/read/${board.no }"/>">
 					${board.title }</a></td>
 					<td>${board.name }</td>
 					<td><fmt:formatDate value="${now }" pattern="yyyy-MM-dd"/></td>

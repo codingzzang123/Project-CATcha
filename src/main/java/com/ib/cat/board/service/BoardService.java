@@ -15,5 +15,7 @@ public interface BoardService {
 	public abstract void write(BoardVo boardVo);
 	
 	public abstract BoardVo read(int seq);
+	
+	
 
 }

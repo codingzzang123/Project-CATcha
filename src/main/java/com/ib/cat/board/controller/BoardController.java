@@ -24,7 +24,7 @@ public class BoardController {
 	public void setBoardService(BoardService boardService) {
 		this.boardService = boardService;
 	}
-	
+	//목록
 	@RequestMapping(value="/board")
 	public String list(Model model) {
 		List<BoardVo> list = new ArrayList<>();
@@ -36,10 +36,12 @@ public class BoardController {
 		model.addAttribute("boardlist", list);
 		return "/board/list";
 	}
-	
-	@RequestMapping(value="/board/read/{seq}")
-	public String read(Model model, @PathVariable int seq) {
-		model.addAttribute("boardVo", boardService.read(seq));
+	//${no}번 게시물읽기기능
+	@RequestMapping(value="/board/read/{no}")
+	public String read(Model model, @PathVariable int no) {
+		BoardVo vo = boardService.read(no);
+		System.out.println(vo.toString());
+//		model.addAttribute("boardVo", boardService.read(no));
 		return "/board/read";
 	}
 	

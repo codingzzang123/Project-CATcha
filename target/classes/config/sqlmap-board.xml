@@ -13,32 +13,38 @@
 		BOARD WHEERE no = #{SEQ_BOARD}
 	</select>
 	
-	<insert id="insert" parameterType="com.ib.cat.board.model.BoardVo">
+	<insert id="board.insert" parameterType="com.ib.cat.board.model.BoardVo">
 	INSERT INTO BOARD
-	(NO, NAME, CATE, TITLE, CONTENT, REGDATE, VIEWS, LIKES, IMGO, IMGS, REPLYS)
+	(no, name, cate, title, content, regdate, views, likes, imgo, imgs, replys)
 	VALUES
-	(SEQ_BOARD.nextval,#{NAME}, #{CATE}, #{TITLE}, #{CONTENT}, #{REGDATE}, #{VIEWS}, #{LIKES}, #{IMGO}, #{IMGS}, #{REPLYS} )
+	(SEQ_BOARD.nextval,#{name}, #{cate}, #{title}, #{content}, #{regdate}, #{views}, #{likes}, #{imgo}, #{imgs}, #{replys} )
 	<selectKey keyProperty="no" resultType="Integer">
 		SELECT NVL(MAX(SEQ_BOARD), 0) FROM BOARD
 	</selectKey>
 	</insert>
 	
 	<update id="update" parameterType="com.ib.cat.board.model.BoardVo">
+		
 		UPDATE BOARD SET 
-		NAME = #{NAME},
-		CATE = #{CATE},
-		TITLE = #{TITLE},
-		CONTENT = #{CONTENT},
-		REGDATE = #{REGDATE},
-		VIEWS = #{VIEWS},
-		LIKES = #{LIKES},
-		IMGO = #{IMGO},
-		IMGS = #{IMGS},
-		REPLYS = #{REPLYS}
+		name = #{name},
+		cate = #{cate},
+		title = #{title},
+		content = #{content},
+		regdate = #{regdate},
+		views = #{views},
+		likes = #{likes},
+		imgo = #{imgo},
+		imgs = #{imgs},
+		replys = #{replys}
+		WHERE no = #{no}
+	</update>
+	
+	<update id = "updateCount" parameterType="int">
+		UPDATE BOARD content SET content.count =?1 where content.content=?2
 	</update>
 	
 	<delete id="delete" parameterType="com.ib.cat.board.model.BoardVo">
-		DELETE FROM BOARD WHERE no = #{NO}
+		DELETE FROM BOARD WHERE no = #{no}
 	</delete>
 	
 	
