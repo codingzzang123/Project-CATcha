@@ -12,7 +12,7 @@
 		SELECT * FROM 
 		BOARD WHEERE no = #{SEQ_BOARD}
 	</select>
-	
+	<!--  
 	<insert id="board.insert" parameterType="com.ib.cat.board.model.BoardVo">
 	INSERT INTO BOARD
 	(no, name, cate, title, content, regdate, views, likes, imgo, imgs, replys)
@@ -21,7 +21,7 @@
 	<selectKey keyProperty="no" resultType="Integer">
 		SELECT NVL(MAX(SEQ_BOARD), 0) FROM BOARD
 	</selectKey>
-	</insert>
+	</insert>-->
 	
 	<update id="update" parameterType="com.ib.cat.board.model.BoardVo">
 		
