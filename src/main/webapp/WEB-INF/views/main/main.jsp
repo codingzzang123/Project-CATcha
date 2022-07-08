@@ -25,9 +25,26 @@
 				<p class="css-header-Font1">Welcome.</p>
 				<p class="css-header-Font2">Millions of movies, TV shows and people to discover. Explore now.</p>
 				<div class="search-container">
-					<form action="<c:url value="/search"/>" method="post">
-				    	<input class="search-input" type="text" name="keyword" placeholder="     Search for Movie, TV "/>
+				
+					<!-- 검색 -->
+					<form action="<c:url value="/search"/>" method="get" onsubmit="return submit()">
+				    	<input class="search-input" type="text" name="query" 
+				    		value="${query }" placeholder="     Search for Movie, TV ">
 				    </form>
+				    
+					    <script>
+						    function submit(){
+						    	let val = $("input[name='query']").val();
+						        searchForm.find("input[name='query']").val(val);
+						        
+						        if(val != null){
+						        	return true;
+						        }else{
+						        	return false;
+						        }
+						    }
+					    </script>
+					    
 				</div>
 			</div>
 		</div>
@@ -45,7 +62,7 @@
 	                            <ul class="css-1ya1z7z-VisualUl">
 	                                <li class="css-8y23cj">
 	                                    <c:forEach var="nowPlay" begin="0" end="19" step="1" items="${nowPlay}"> 
-	                                        <a href="#">
+	                                        <a href="<c:url value='/movie/content/${nowPlay.id }'/>">
 	                                            <div class="css-1qmeemv">
 	                                                <div class="css-1rdb949-StyledLazyLoadingImage ezcopuc0">
 	                                                    <img src="${Image_URL }${nowPlay.poster_path }" class="css-qhzw1o-StyledImg ezcopuc1">
@@ -104,7 +121,7 @@
 	                            <ul class="css-1ya1z7z-VisualUl">
 	                                <li class="css-8y23cj">
 	                                    <c:forEach var="popular" begin="0" end="19" step="1" items="${popular}"> 
-	                                        <a href="#">
+	                                        <a href="<c:url value='/movie/content/${popular.id }'/>">
 	                                            <div class="css-1qmeemv">
 	                                                <div class="css-1rdb949-StyledLazyLoadingImage ezcopuc0">
 	                                                    <img src="${Image_URL }${popular.poster_path }" class="css-qhzw1o-StyledImg ezcopuc1">
@@ -161,7 +178,7 @@
 	                            <ul class="css-1ya1z7z-VisualUl">
 	                                <li class="css-8y23cj">
 	                                    <c:forEach var="highLate" begin="0" end="19" step="1" items="${highLate}"> 
-	                                        <a href="#">
+	                                        <a href="<c:url value='/movie/content/${highLate.id }'/>">
 	                                            <div class="css-1qmeemv">
 	                                                <div class="css-1rdb949-StyledLazyLoadingImage ezcopuc0">
 	                                                    <img src="${Image_URL }${highLate.poster_path }" class="css-qhzw1o-StyledImg ezcopuc1">

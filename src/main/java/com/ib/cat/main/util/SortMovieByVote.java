@@ -1,10 +1,10 @@
-package com.ib.cat.main.sort;
+package com.ib.cat.main.util;
 
 import java.util.Comparator;
 
-import com.ib.cat.main.util.MovieDTO;
+import com.ib.cat.main.dto.MovieDTO;
 
-public class SortByVote implements Comparator<MovieDTO>{
+public class SortMovieByVote implements Comparator<MovieDTO>{
 	@Override
 	public int compare(MovieDTO o1, MovieDTO o2) {
 		float first = o1.getVote_average();

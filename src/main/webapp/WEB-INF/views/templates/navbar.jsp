@@ -50,12 +50,26 @@
         </ul>
         <ul class="navbar__menu css-member">
             <li class="nav-link active">
-                <form action="#">
+            
+                <form action="<c:url value="/search"/>" method="get" onsubmit="return submit()">
                     <div class="search">
-                        <input class="css-searchBar" type="text" placeholder="검색어 입력">
-                        <input type="image" class="css-searchImg" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">   
+                        <input class="css-searchBar" type="text" name="query" placeholder="검색어 입력">
+                        <img class="css-searchImg" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">   
                     </div>
                 </form>
+                	<script>
+					    function submit(){
+					    	let val = $("input[name='query']").val();
+					        searchForm.find("input[name='query']").val(val);
+					        
+					        if(val != null){
+					        	return true;
+					        }else{
+					        	return false;
+					        }
+					    }
+				    </script>
+                
                 <li class="nav-link active">
                     <a class="css-memberButton" href="${pageContext.request.contextPath }/member/login" >로그인</a>
                     <a class="css-memberButton" href="${pageContext.request.contextPath }/member/sign" >회원가입</a>
