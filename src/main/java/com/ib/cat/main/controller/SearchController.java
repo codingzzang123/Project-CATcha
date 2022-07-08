@@ -30,7 +30,7 @@ public class SearchController {
 	
 	private SearchCountDTO scd;
 
-	@RequestMapping(value={"/search", "/search/movie"})
+	@RequestMapping(value={"/search", "/search/movie"}) //추가
 	public String searchform1(Model model, HttpServletRequest request) {
 		String query = request.getParameter("query");
 		String pageNum = request.getParameter("page");
