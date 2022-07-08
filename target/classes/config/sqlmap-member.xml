@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="member.dtd">
-	<insert id="insert" parameterType="member">
+	<insert id="memeberInsert" parameterType="member">
 		insert into member (id, pw, name, email, imgo, imgs) 
 		values (#{id}, #{pw}, #{name}, #{email}, #{imgo}, #{imgs})
 	</insert>

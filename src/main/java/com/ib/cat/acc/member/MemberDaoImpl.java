@@ -13,7 +13,7 @@ public class MemberDaoImpl implements MemberDao{
 	}
 
 	@Override
-	public void insert(MemberDto md) {
+	public void memeberInsert(MemberDto md) {
 		sst.insert("insert", md);
 	}
 
