@@ -32,7 +32,7 @@ public class LoginController {
 	
 	@RequestMapping(value="/member/login", method = RequestMethod.POST)
 	public String sign(HttpServletRequest req, @Valid MemberDto md, BindingResult bindingResult) {
-		if(md.getId()==null) {
+		if(memberDao.idCheck(md.getId())==1) {
 			return "member/login";
 		}
 		if(bindingResult.hasErrors()) {
@@ -56,7 +56,7 @@ public class LoginController {
 		//비밀번호 시큐리티
 		md.setPw(be.encode(md.getPw()));
 		//데이터 저장
-		memberDao.insert(md);
+		memberDao.memeberInsert(md);
 		
 				
 		return "member/login";
