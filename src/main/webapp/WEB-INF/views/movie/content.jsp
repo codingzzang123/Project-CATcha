@@ -21,9 +21,9 @@
 <br>
 Title : ${contents.title}
 <br>
-Release Date : ${contents.releaseDate}
+Release Date : <fmt:formatDate value="${contents.releaseDate}" pattern="yyyy-MM-dd"/>
 <br>
-runtime : ${contents.runtime}
+runtime : ${contents.hour}h${contents.minute}m
 <br>
 Genre : 
 <c:forEach var="genres" items="${contents.ls}">

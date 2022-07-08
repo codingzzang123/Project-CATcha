@@ -16,9 +16,11 @@ public class ContentsVO {
 	private float popularity;//v
 	private String genre; //컨텐츠 장르
 	private List<Integer> genres;//v
+	
 	private String runtime;
-//	private int hour;
-//	private int minute;
+	private int hour;
+	private int minute;
+	
 	private int count;
 	private Double star; //평점
 //	private GenresVO genresVO;
@@ -131,20 +133,17 @@ public class ContentsVO {
 	public void setStar(Double star) {
 		this.star = star;
 	}
-//	public int getHour() {
-//		return hour;
-//	}
-//	public void setHour(int hour) {
-//		this.hour = hour;
-//	}
-//	public int getMinute() {
-//		return minute;
-//	}
-//	public void setMinute(int minute) {
-//		this.minute = minute;
-//	}
-//	
-
-	
+	public int getHour() {
+		return hour;
+	}
+	public void setHour(int hour) {
+		this.hour = hour;
+	}
+	public int getMinute() {
+		return minute;
+	}
+	public void setMinute(int minute) {
+		this.minute = minute;
+	}
 
 }
