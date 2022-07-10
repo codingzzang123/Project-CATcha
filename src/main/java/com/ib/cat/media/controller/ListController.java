@@ -11,13 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ib.cat.main.service.PagingService;
 import com.ib.cat.media.SortCriteria;
 import com.ib.cat.media.service.ContentsUtil;
-import com.ib.cat.media.service.PagingUtil;
 import com.ib.cat.media.vo.ContentsVO;
 
 @Controller
 public class ListController {
+	@Autowired
+	private PagingService pagingService;
 
 	private ContentsUtil contentsUtil;
 	@Autowired
@@ -25,11 +27,12 @@ public class ListController {
 		this.contentsUtil = contentsUtil;
 	}
 	
-	private PagingUtil pagingUtil;
-	@Autowired
-	public void setPagingUtil(PagingUtil pagingUtil) {
-		this.pagingUtil = pagingUtil;
-	}
+//	
+//	private PagingUtil pagingUtil;
+//	@Autowired
+//	public void setPagingUtil(PagingUtil pagingUtil) {
+//		this.pagingUtil = pagingUtil;
+//	}
 	
 	@RequestMapping(value="/movie/list")
 	public ModelAndView main(
@@ -53,19 +56,22 @@ public class ListController {
 		System.out.println("Ctrl - contentsType: "+contentsType);
 		System.out.println("Ctrl - category: "+category);
 		
-		//PagingUtil작업..!!
-		String paging = null;
-		/*pagingUtil 생성자에 들어갈 totalPage - json 파싱 결과물에서 가져오기*/
-//		int totalPage = movieList.get(0).getTotalPages();
-		int totalPage = 500;//무료 API로 호출시 500page까지만 제공돼서 그냥 500으로 기재
-		if(currentPage > totalPage) {
-			currentPage = totalPage;
-		}
-		String listUrl = request.getContextPath()+"/movie/list";
+		pagingService.startPaging(currentPage, 10000);
 		
-		paging = pagingUtil.paging(currentPage, totalPage, listUrl); 
-		paging = paging.replaceAll("#####",  category); //url에 들어있는 특수문자${가 해석이 안 돼서 바꿈
-		System.out.println(paging);
+		
+		//PagingUtil작업..!!
+//		String paging = null;
+//		/*pagingUtil 생성자에 들어갈 totalPage - json 파싱 결과물에서 가져오기*/
+////		int totalPage = movieList.get(0).getTotalPages();
+//		int totalPage = 500;//무료 API로 호출시 500page까지만 제공돼서 그냥 500으로 기재
+//		if(currentPage > totalPage) {
+//			currentPage = totalPage;
+//		}
+//		String listUrl = request.getContextPath()+"/movie/list";
+//		
+//		paging = pagingUtil.paging(currentPage, totalPage, listUrl); 
+//		paging = paging.replaceAll("#####",  category); //url에 들어있는 특수문자${가 해석이 안 돼서 바꿈
+//		System.out.println(paging);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("movie/list");
@@ -73,7 +79,8 @@ public class ListController {
 		mav.addObject("category", category);
 		mav.addObject("scmd", cri);
 		mav.addObject("page", currentPage);
-		mav.addObject("paging", paging);
+//		mav.addObject("paging", paging);
+		mav.addObject("paging", pagingService);
 
 		return mav;
 	}
