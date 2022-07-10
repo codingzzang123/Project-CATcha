@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 public class PagingService {
 	
 	private static final int pageSize = 20;
-	private final static int pageBlock = 5; //블럭 갯수는 5개
+	private final static int pageBlock = 10; //블럭 갯수는 10개
 	
 	private int curPage;
 	private int blockStartNum = 0;

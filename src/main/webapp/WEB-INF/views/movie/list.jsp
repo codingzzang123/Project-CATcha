@@ -107,12 +107,41 @@ Movie List - ${category}
 	</div>
 </div>
 
-<div class="container">
-	<h3 style="text-align: center;">paging</h3>
-	
-	<div style="padding-top: 20px;">
-		${paging}
-	</div>
-</div>
+<nav aria-label="Page navigation example">
+	  <ul class="pagination">
+	  	
+	  	<!-- 페이징 맨앞으로 버튼
+	  	<li class="page-item"><a class="page-link" href="<c:url value='/search/movie?query=${query }&page=${now-1 }'/>">START</a></li> -->
+	  	
+	  	<!-- 페이징 << 버튼 -->
+	  	<c:if test="${paging.curPage ne 1 }">
+    		<li class="page-item"><a class="page-link" href="<c:url value='/movie/list?page=${paging.curPage-1 }&category=${category}'/>">&laquo;</a></li>
+  		</c:if>
+  		
+  		
+	  	<!-- 페이징 블럭 번호  -->	
+	  	<c:forEach begin="${paging.blockStartNum }" end="${paging.blockLastNum }" var="i">
+    				<c:choose>	
+	    				<c:when test="${i eq paging.curPage }">
+	    					<li class="page-item active"><a class="page-link" href="<c:url value='/movie/list?page=${i }&category=${category}'/>">${i }</a></li>
+	    				</c:when>
+	    				<c:otherwise>
+	    					<li class="page-item"><a class="page-link" href="<c:url value='/movie/list?page=${i }&category=${category}'/>">${i }</a></li>
+	    				</c:otherwise>
+    				</c:choose>
+		</c:forEach>
+		
+		
+		<!-- 페이징 >> 버튼 -->
+		<c:if test="${paging.curPage ne paging.lastPageNum }">
+    		<li class="page-item"><a class="page-link" href="<c:url value='/movie/list?page=${paging.curPage+1 }&category=${category}'/>">&raquo;</a></li>
+		</c:if>
+		
+		<!-- 페이징 맨뒤로 버튼 
+	  	<li class="page-item"><a class="page-link" href="<c:url value='/search/movie?query=${query }&page=${now-1 }'/>">END</a></li>-->
+	  		
+	  </ul>
+	</nav>
+
 </body>
 </html>
