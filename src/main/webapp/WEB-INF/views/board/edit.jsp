@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,30 +10,39 @@
 <title>수정</title>
 </head>
 <body>
-		<form:form commandName="boardVo" method="POST">
-			<table border="1">
-				<tr>
-						<th><form:label path="cate">카테고리</form:label></th>
-						<td><form:input path="cate"/>
-						<form:errors path="cate"/></td>
-				</tr>
-				<tr>
-						<th><form:label path="title">제목</form:label></th>
-						<td><form:input path="title"/>
-						<form:errors path="title"/></td>
-				</tr>
-				<tr>
-						<th><form:label path="content">내용</form:label></th>
-						<td><form:input path="content"/>
-						<form:errors path="content"/></td>
-				</tr>
-			</table>
+<h2>Title of Board</h2>
+	<form method="POST" action="<c:url value="/board/list" />">					
+		<table border="1">	
+			<tr>	
+				<td>카테고리</td>
+				<td>
+					<input type="text" name="cate" placeholder="${boardVo.cate }">
+				</td>
+			</tr>	
+			<tr>	
+				<td>제목</td>
+				<td>
+					<input type="text" name="title" placeholder="${boardVo.title }">
+				</td>
+			</tr>	
+			<tr>
+				<td>내용</td>
+				<td>
+					<input type="text" name="content" placeholder=">${boardVo.content }">
+				</td>
+			</tr>
+		</table>
 			<div>
-					<a href="<c:url value="/board/list/${boardVo.seq }"/>">뒤로가기</a>
-					<a href="<c:url value="/board/detail/${boardVo.seq }"/>">"수정</a>
-					<a href="<c:url value="/board/list/${boardVo.seq }"/>">삭제</a>
+				<td><input type="button" value="뒤로가기"  onclick="goBack();" ></td>
+				
+				
+				<td>
+					<a href="<c:url value='/board/edit/${boardVo.no }'/>">
+						<button type="button">수정완료</button>
+					</a>
+				</td>
 			</div>
-		</form:form>
-
+		</form>
+	</body>
 </body>
 </html>

@@ -5,29 +5,26 @@
 <!DOCTYPE html>
 <html><head><title>새 글 작성</title></head>
 <body>
-<h2>새 글 작성</h2>
-	<form:form commandName="boardVo" method="POST">		
-			<table border="1">
-				<tr><td>카테고리</td>
-						<th><form:label path="cate">카테고리</form:label></th>
-						<td><form:input path="cate"/>
-						<form:errors path="cate"/><td>
+<h2>Title of Board 📝</h2>
+	<form method="POST" action="<c:url value="/board/list" />">		
+			<table border="1"> 
+				 <tr><b>카테고리</b>
+						<tr><input type="radio" name="cate" value="일반" checked>일반</tr>
+						<tr><input type="radio" name="cate" value="영화" checked>영화</tr>
+						<tr><input type="radio" name="cate" value="TV" checked>TV</tr>
 				</tr>
-				<tr><td>제목</td>
-						<th><form:label path="title">제목</form:label></th>
-						<td><form:input path="title"/>
-						<form:errors path="title"/><td>
+				<tr><td><b>제목</b></td>
+						<td><input type="text" name= "title" />
+						
 				</tr>
-				<tr><td>내용</td>
-						<th><form:label path="content">내용</form:label></th>
-						<td><form:input path="content"/>
-						<form:errors path="content"/><td>
-				</tr>
+				<tr><td><b>내용</b></td>
+						<td><input type="text" name= "content" />
+						
+				</tr> 
 				<tr>
-				<td>
-				<button type="reset">취소</button>
-				<button type="submit">등록</button>
+				<td><input type="submit" value="취소"></td> 
+				<td><input type="submit" value="등록"></td>
 			</table>
-	</form:form>
+	</form>
 </body>
 </html>
