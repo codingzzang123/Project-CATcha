@@ -9,8 +9,9 @@
 <title>목록</title>
 </head>
 <body>
-<h2>게시물 목록</h2>
+<h2>Title of Board</h2>
 		<table border="1">
+		<thead>
 			<tr>
 				<th>번호</th>
 				<th>카테고리</th>
@@ -20,16 +21,17 @@
 				<th>조회</th>
 				<th>추천</th>	
 			</tr>
+		</thead>
 			<c:forEach var="board" items="${boardlist }">
 				<tr>
 					<td>${board.no }</td>
 					<td>${board.cate }</td>
-					<td><a href="<c:url value="/board/read/${board.no }"/>">
+					<td><a href="<c:url value="/board/detail/${board.no }"/>">
 					${board.title }</a></td>
 					<td>${board.name }</td>
 					<td><fmt:formatDate value="${now }" pattern="yyyy-MM-dd"/></td>
 					<td>${board.views }
-					<td>${board.likes }</td>
+					<td>${board.likes }</td>	
 				</tr>
 			</c:forEach>
 		</table>

@@ -3,47 +3,45 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="board.Dao">
+	
 	<select id="list" resultType="com.ib.cat.board.model.BoardVo">
 		SELECT * FROM BOARD
 		ORDER BY no desc
 	</select>
 	
-	<select id="select" parameterType="int" resultType="com.ib.cat.board.model.BoardVo">
-		SELECT * FROM 
-		BOARD WHEERE no = #{SEQ_BOARD}
+	<select id="selectById" parameterType="int" resultType="boardVo">
+		SELECT * FROM BOARD WHERE no = #{no}
 	</select>
-	<!--  
-	<insert id="board.insert" parameterType="com.ib.cat.board.model.BoardVo">
-	INSERT INTO BOARD
-	(no, name, cate, title, content, regdate, views, likes, imgo, imgs, replys)
-	VALUES
-	(SEQ_BOARD.nextval,#{name}, #{cate}, #{title}, #{content}, #{regdate}, #{views}, #{likes}, #{imgo}, #{imgs}, #{replys} )
-	<selectKey keyProperty="no" resultType="Integer">
-		SELECT NVL(MAX(SEQ_BOARD), 0) FROM BOARD
-	</selectKey>
-	</insert>-->
 	
-	<update id="update" parameterType="com.ib.cat.board.model.BoardVo">
+
+	<insert id="boardinsert" parameterType="boardVo">
+	
+		INSERT INTO BOARD 
+			(no, name, cate, title, content, regdate)
+		VALUES
+			(SEQ_BOARD.nextval, #{name}, #{cate}, #{title}, #{content}, #{regdate})
+	</insert>
+	 
+	
+	<update id="update" parameterType="boardVo">
 		
 		UPDATE BOARD SET 
 		name = #{name},
 		cate = #{cate},
 		title = #{title},
 		content = #{content},
-		regdate = #{regdate},
-		views = #{views},
-		likes = #{likes},
-		imgo = #{imgo},
-		imgs = #{imgs},
-		replys = #{replys}
+		regdate = #{regdate}
+		
 		WHERE no = #{no}
 	</update>
 	
 	<update id = "updateCount" parameterType="int">
 		UPDATE BOARD content SET content.count =?1 where content.content=?2
 	</update>
+	 
 	
-	<delete id="delete" parameterType="com.ib.cat.board.model.BoardVo">
+	
+	<delete id="delete" parameterType="boardVo">
 		DELETE FROM BOARD WHERE no = #{no}
 	</delete>
 	
