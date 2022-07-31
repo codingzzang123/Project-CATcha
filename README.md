@@ -1,5 +1,9 @@
 # 📌Final Project <i><b>CATcha</b></i>
-TMDB API과 다양한 API를 이용한 코딩 프로젝트
+ <p align="center" dir="auto">
+    <b><h3>세상의 모든 취향의 미디어를 한 눈에</h3></b>
+    <br>TMDB API과 다양한 API를 이용한 코딩 프로젝트
+   </p>
+
 </br>
 </br>
 
@@ -46,26 +50,44 @@ TMDB API과 다양한 API를 이용한 코딩 프로젝트
 <ul dir="auto">
   <li>OS : Window10 64bit</li>
   <li>Tool : Spring Framework</li>
-  <li>DBMS : Oracle 11g</li>
+  <li>DBMS : Oracle 21C</li>
   <li>Server : Apache Tomcat v9.0</li>
   <li>Language : JAVA / SQL / JSP / jQuery / JavaScript / HTML / CSS</li>
 </ul>
 </br>
+
+
+<h2 dir="auto">
+ 📑 역할
+</h2>
+<ul dir="auto">
+  <li>메인 페이지 개발.</li>
+  <li>회원 페이지 개발.</li>
+  <li>상단 Navbar 개발.</li>
+  <li>통합 검색 기능 구현.</li>
+  <li>실시간 알림 기능 구현.</li>
+  <li>DB설계 및 관리.</li>
+</ul>
+<br>
+
 <h2 dir="auto">
  🔍 ERD
 </h2>
   <p align="center" dir="auto">
-    <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/30e44bdd-81a7-46e1-b9a4-fffd3fec3036/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220703%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220703T053720Z&X-Amz-Expires=86400&X-Amz-Signature=eccc4f193d9a08d77da6827c8298d840547c26ca24c3970a793b1dd49184a1bd&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject" style="max-width: 100%;">
+    <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/64478f93-ad99-44d0-b82d-84b2da3e6bf1/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220731%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220731T070704Z&X-Amz-Expires=86400&X-Amz-Signature=079e59896fddc8378ab36b070e65117cce3458477ed68211263304ba0e204626&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject" style="max-width: 100%;">
   </p>
 <h2 dir="auto">
  🔍 UseCase Diagram
 </h2>
   <p align="center" dir="auto">
-    <img src="https://user-images.githubusercontent.com/93244802/162567309-9632cf94-0f24-4337-9e1c-88d137314b8a.jpg" style="max-width: 100%;">
+    <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/75f455c9-8373-4ccc-9fe3-cebdf48df01c/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220731%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220731T071559Z&X-Amz-Expires=86400&X-Amz-Signature=bee106ab919c063ad21ada7f5b52d5153b809410f2814b6dd39be5d03c41e981&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject" style="max-width: 100%;">
   </p>  
 
 
 </br>
+
+
+
 <h2 dir="auto">
 💡 More
 </h2>
