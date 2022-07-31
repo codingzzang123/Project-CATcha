@@ -4,8 +4,6 @@
     <br>TMDB API과 다양한 API를 이용한 코딩 프로젝트
    </p>
 
-</br>
-</br>
 
 <hr>
 </br>
